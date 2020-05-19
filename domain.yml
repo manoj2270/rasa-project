@@ -1,0 +1,123 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- bot_challenge
+- show_products
+- get_price
+- thankyou
+- chitchat
+- stop
+- inform
+- get_history
+- show_stats
+- out_of_scope
+- task_list
+- choose_list
+entities:
+- condition
+- price
+- product_name
+- user_id
+- time
+slots:
+  category:
+    type: unfeaturized
+    auto_fill: false
+  condition:
+    type: unfeaturized
+    auto_fill: false
+  price:
+    type: unfeaturized
+    auto_fill: false
+  product_name:
+    type: unfeaturized
+    auto_fill: false
+  requested_slot:
+    type: unfeaturized
+  time:
+    type: unfeaturized
+    auto_fill: false
+  user_id:
+    type: unfeaturized
+    auto_fill: false
+responses:
+  utter_ask_time:
+  - text: can you provide time range?
+  utter_ask_user_id:
+  - text: Can you please provide your user id?
+  utter_ask_continue:
+  - text: do you want to continue
+  utter_thankyou:
+  - text: Thank you
+  utter_chitchat:
+  - text: Seems we are deviating from our task
+  utter_ask_price:
+  - text: what is the price of the product?
+  utter_ask_product_name:
+  - text: what is the product name?
+  utter_ask_condition:
+  - text: whould you like to show products less than {price} or greater than?
+  utter_greet:
+  - text: Hey! How can I help you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_default:
+  - text: sorry, I didn't understand you, please try input something else
+  utter_ask_rephrase:
+  - text: i didnt get it, can you rephrase your input
+  utter_wrong_price:
+  - text: Price should be a positive number
+  utter_wrong_condition:
+  - text: I didnt understand you
+  utter_ask_category:
+  - text: "Choose any of below categories of products \n A. HOLDER \n B. LIGHT \n\
+      \ C.LANTERN \n D.BOTTLE \n E. MUG \n F.BOX \n G. Other \n"
+  utter_wrong_category:
+  - text: I didnt get you, Can you please choose from the list of categories?
+  utter_task_list:
+  - text: "I can help you with below tasks. choose any one\n Display products \n Check\
+      \ price \n Check Purchase history \n Display Stats\n "
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_ask_price
+- utter_ask_condition
+- action_get_price
+- utter_ask_product_name
+- utter_chitchat
+- utter_thankyou
+- utter_ask_continue
+- utter_ask_user_id
+- utter_ask_time
+- action_show_stats
+- utter_ask_category
+- utter_wrong_category
+- utter_ask_rephrase
+- utter_task_list
+- action_task_list
+- action_dispatch_task
+- utter_default
+- utter_wrong_price
+- utter_wrong_condition
+forms:
+- show_products_form
+- get_price_form
+- show_history_form

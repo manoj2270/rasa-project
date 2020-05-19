@@ -1,0 +1,32 @@
+language: en
+pipeline:
+  - name: HFTransformersNLP
+  - name: LanguageModelTokenizer
+  - name: LanguageModelFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: "word"
+    min_ngram: 1
+    max_ngram: 4
+    OOV_token: "oov"
+  - name: SklearnIntentClassifier
+    scoring_function: "f1_weighted"
+    C: [1, 2, 5, 10, 20, 100]
+    kernels: ["rbf"]
+  - name: DIETClassifier
+    epochs: 100
+  - name: DucklingHTTPExtractor
+    url: "http://localhost:8000"
+    dimensions: ["time"]
+    locale: "en_GB"
+
+policies:
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+  - name: FormPolicy
+  - name: MappingPolicy
+  - name: TwoStageFallbackPolicy
+    nlu_threshold: 0.2
+    core_threshold: 0.2
+    fallback_core_action_name: "action_default_fallback"
+    fallback_nlu_action_name: "action_default_fallback"
+    deny_suggestion_intent_name: "out_of_scope"
